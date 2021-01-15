@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inject-deployment
+  labels:
+    app: inject-app
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inject-app
+  template:
+    metadata:
+      labels:
+        app: inject-app
+    containers:
+      - name: nginx
+        image: nginx:1.14-alpine
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 80
