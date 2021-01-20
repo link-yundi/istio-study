@@ -23,4 +23,28 @@ spec:
           image: busybox
           imagePullPolicy: IfNotPresent
           command: [ "/bin/sh", "-c", "echo 'hello httpd' > /var/www/index.html; httpd -f -p 8080 -h /var/www" ]
-          
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat
+  labels:
+    server: tomcat
+    app: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      server: tomcat
+      app: web
+  template:
+    metadata:
+      name: tomcat
+      labels:
+        server: tomcat
+        app: web
+    spec: 
+      containers:
+        - name: tomcat
+          image: docker.io/kubeguide/tomcat-app:v1
+          imagePullPolicy: IfNotPresent
