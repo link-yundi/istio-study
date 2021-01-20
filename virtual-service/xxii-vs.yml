@@ -9,8 +9,8 @@ spec:
   http:
     - route:
       - destination:
-        host: tomcat-svc
+          host: tomcat-svc
         weight: 20
       - destination:
-        host: httpd-svc
+          host: httpd-svc
         weight: 80
