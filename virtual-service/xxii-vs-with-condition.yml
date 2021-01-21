@@ -14,6 +14,6 @@ spec:
       route:
       - destination:
           host: tomcat-svc
-    - route:
-      - destination:
-          host: httpd-svc
+  - route:
+    - destination:
+        host: httpd-svc
