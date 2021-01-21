@@ -4,16 +4,15 @@ metadata:
   name: web-svc-vs
 spec:
   hosts:
-    # - web-svc.default.svc.cluster.local
   - web-svc
   http:
   - match:
     - headers:
         end-user:
           exact: xxii
-      route:
-      - destination:
-          host: tomcat-svc
+    route:
+    - destination:
+        host: tomcat-svc
   - route:
     - destination:
         host: httpd-svc
