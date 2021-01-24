@@ -5,14 +5,38 @@ metadata:
 spec:
   hosts:
   - web-svc
+  gateways:
+    - web-gateway
   http:
   - match:
-    - headers:
-        end-user:
-          exact: xxii
+    # - headers:
+    #     end-user:
+    #       exact: xxii
+    - uri:
+        prefix: /tomcat
     route:
     - destination:
         host: tomcat-svc
-  - route:
+  - match:
+    - uri:
+        prefix: /httpd
+    route:
     - destination:
         host: httpd-svc
+  # - route:
+  #   - destination:
+  #       host: httpd-svc
+---
+apieVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: web-gateway
+spec:
+  # selector:
+  #   istio: ingressgateway
+  servers:
+  - hosts: "*"
+    port:
+      name: http
+      number: 8080
+      protocol: TCP
