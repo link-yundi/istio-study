@@ -4,7 +4,8 @@ metadata:
   name: web-svc-vs
 spec:
   hosts:
-  - web-svc
+  # - web-svc
+  - "*"
   gateways:
     - web-gateway
   http:
@@ -17,12 +18,16 @@ spec:
     route:
     - destination:
         host: tomcat-svc
+        port: 
+          number: 8080
   - match:
     - uri:
         prefix: "/httpd"
     route:
     - destination:
         host: httpd-svc
+        port: 
+          number: 8080
   # - route:
   #   - destination:
   #       host: httpd-svc
