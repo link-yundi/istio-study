@@ -13,13 +13,13 @@ spec:
     #     end-user:
     #       exact: xxii
     - uri:
-        prefix: /tomcat
+        prefix: "/tomcat"
     route:
     - destination:
         host: tomcat-svc
   - match:
     - uri:
-        prefix: /httpd
+        prefix: "/httpd"
     route:
     - destination:
         host: httpd-svc

@@ -9,7 +9,6 @@ spec:
     - port:
         number: 80
         name: web-http
-        targetPort: 8080
-        protocol: TCP
+        protocol: HTTP
       hosts:
         - "*"
